@@ -1,23 +1,5 @@
-# Laravel Package for Vodacom Mozambique M-Pesa
+<?php
 
-This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API in Laravel applications
-
-# 1. Installation
-
-All that you have to do is the following:
-```
-composer require calvinchiulele/mpesa-mz
-```
-
-```
-php artisan vendor:publish --providor=calvinchiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
-```
-
-# 2. Usage
-
-After you have published the config files necessary for the packages, you've to customize it according to your needs:
-
-```
 return [
     /*
     |--------------------------------------------------------------------------
@@ -89,4 +71,3 @@ return [
     */
     'security_credential' => env('MPESA_SECURITY_CREDENTIAL', null)
 ];
-```
