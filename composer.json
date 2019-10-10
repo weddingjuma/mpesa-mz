@@ -1,0 +1,27 @@
+{
+    "name": "calvinchiulele/mpesa-mz",
+    "description": "Unofficial laravel package for Mozambique M-Pesa",
+    "type": "library",
+    "require": {
+        "abdulmueid/mpesa": "^1.0",
+        "illuminate/support": ">=5.5",
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Calvin Chiulele",
+            "email": "cchiulele@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "calvinchiulele\\MPesaMz\\": "src"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
