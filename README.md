@@ -6,7 +6,7 @@ This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API e
 
 All that you have to do is the following:
 ```
-composer require calvinchiulele/mpesa-mz
+composer require calvin/mpesa-mz
 ```
 
 ```
