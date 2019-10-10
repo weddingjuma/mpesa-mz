@@ -2,6 +2,10 @@
 
 This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API easier in Laravel applications
 
+For more information of what's M-Pesa, please refer to M-Pesa official website: https://www.vm.co.mz/en/M-Pesa2
+
+For more information of what abdulmueid/mpesa-php-api is, refer to https://github.com/abdulmueid/mpesa-php-api
+
 # 1. Installation
 
 All that you have to do is the following:
@@ -205,5 +209,4 @@ class ExampleController extends Controller
 
 ```
 
-# THIS PACKAGE IS STILL IN DEVELOPMENT. YOU CAN CREATE ISSUES AND PRs FOR BUG FIXES AND IMPROVEMENTS. 
-
+This package is still in development so any suggestions, improvements and recommendations are welcomed.
