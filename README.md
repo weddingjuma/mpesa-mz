@@ -1,6 +1,6 @@
 # Laravel Package for Vodacom Mozambique M-Pesa
 
-This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API in Laravel applications
+This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API easier in Laravel applications
 
 # 1. Installation
 
@@ -13,9 +13,24 @@ composer require calvinchiulele/mpesa-mz
 php artisan vendor:publish --providor=calvinchiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
 ```
 
-# 2. Usage
+# 2. Configuration
 
-After you have published the config files necessary for the packages, you've to customize it according to your needs:
+After you have published the config files necessary for the package, you've to add all the keys 
+necessary for the config file in your .env in order to the config file work properly.
+
+The .env would be like that:
+
+```
+MPESA_PUBLIC_KEY=xxx
+MPESA_API_HOST="api.sandbox.vm.co.mz"
+MPESA_API_KEY=xxx
+MPESA_ORIGIN=xxx
+MPESA_SERVICE_PROVIDER_CODE=xxx
+MPESA_INITIATOR_IDENTIFIER=xxx
+MPESA_SECURITY_CREDENTIAL=xxx
+```
+
+And the config/mpesa-config.php would be like that:
 
 ```
 return [
@@ -90,3 +105,105 @@ return [
     'security_credential' => env('MPESA_SECURITY_CREDENTIAL', null)
 ];
 ```
+
+# 3. Usage
+
+In order to use the package in your Laravel application, you can use either facade or get an instance of M-Pesa on the
+service container.
+
+# Using the facade
+ 
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use calvinchiulele\MPesaMz\Facades\MPesaMzFacade;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    // more code
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // $reference corresponds to your M-Pesa TransactionReference
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        // $thirdPartyReference corresponds to your M-Pesa ThirdPartyReference
+        $payment = MPesaMzFacade::payment($request->msisdn, 100, $reference, $thirdPartyReference);
+
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        $refund = MPesaMzFacade::refund($payment->getTransactionID(), 100);
+
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        $query = MPesaMzFacade::query($refund->getTransactionID(), 100);
+
+        // more code
+    }
+}
+
+```
+
+# Using the instance from service container
+ 
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    /**
+     * M-Pesa service class
+     *
+     * @var calvinchiulele\MPesaMz\Services\MpesaMz
+     */
+     protected $mpesaService;
+
+    /**
+     * Create a new instance
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+         $this->mpesaService = app('mpesamz');
+     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // $reference corresponds to your M-Pesa TransactionReference
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        // $thirdPartyReference corresponds to your M-Pesa ThirdPartyReference
+        $payment = $this->mpesaService->payment($request->msisdn, 100, $reference, $thirdPartyReference);
+
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        $refund = $this->mpesaService->refund($payment->getTransactionID(), 100);
+
+        // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
+        $query = $this->mpesaService->query($refund->getTransactionID(), 100);
+
+        // more code
+    }
+}
+
+```
+
+# THIS PACKAGE IS STILL IN DEVELOPMENT. YOU CAN CREATE ISSUES AND PRs FOR BUG FIXES AND IMPROVEMENTS. 
+

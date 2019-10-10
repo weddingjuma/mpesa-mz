@@ -1,12 +1,16 @@
 <?php
 
+namespace calvinchiulele\MPesaMz\Facades;
+
+use calvinchiulele\MPesaMz\Services\MpesaMz;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class MPesaMzFacade
  *
+ * @package calvinchiulele\MPesaMz\Facades
  * @author Calvin Chiulele <cchiulele@protonmail.com>
  * @since 0.1.0
+ * @see MpesaMz
  */
 class MPesaMzFacade extends Facade
 {
