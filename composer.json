@@ -22,6 +22,16 @@
             "calvinchiulele\\MPesaMz\\": "src"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "calvinchiulele\\MPesaMz\\Providers\\MPesaMzServiceProvider"
+            ],
+            "aliases": {
+                "MPesaMz": "calvinchiulele\\MPesaMz\\Facades\\MPesaMzFacade"
+            }
+        }
+    },
     "minimum-stability": "stable",
     "prefer-stable": true
 }
