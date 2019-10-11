@@ -30,6 +30,9 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "extra": {
+        "branch-aliases": {
+            "dev-master": "0.3.0"
+        },
         "laravel": {
             "providers": [
                 "CalvinChiulele\\MPesaMz\\Providers\\MPesaMzServiceProvider"
