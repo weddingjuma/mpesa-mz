@@ -12,5 +12,5 @@ Some modifications were made in the API of the package
 
 # 0.3.1
 
-src/Providers/MPesaMzServiceProvider didn't publish the config file after issue the 
-php artisan vendor:publish --provider=CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
+src/Providers/MPesaMzServiceProvider now can publish the config file after issue the 
+php artisan vendor:publish --provider=CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config.
