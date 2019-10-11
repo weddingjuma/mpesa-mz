@@ -1,16 +1,19 @@
 <?php
 
-namespace calvinchiulele\MPesaMz\Facades;
+namespace CalvinChiulele\MPesaMz\Facades;
 
-use calvinchiulele\MPesaMz\Services\MpesaMz;
+use CalvinChiulele\MPesaMz\Services\MpesaMz;
 use Illuminate\Support\Facades\Facade;
 
 /**
- *
- * @package calvinchiulele\MPesaMz\Facades
  * @author Calvin Chiulele <cchiulele@protonmail.com>
+ *
+ * @method abdulmueid\mpesa\interfaces\TransactionResponseInterface payment(string $msisdn, float $amount, string $reference, string $third_party_reference)
+ * @method abdulmueid\mpesa\interfaces\TransactionResponseInterface refund(string $transaction_id, float $amount)
+ * @method abdulmueid\mpesa\interfaces\TransactionResponseInterface query(string $query_reference)
+ *
  * @since 0.1.0
- * @see MpesaMz
+ * @see \CalvinChiulele\MpesaMz\Services\MpesaMz
  */
 class MPesaMzFacade extends Facade
 {
@@ -21,6 +24,6 @@ class MPesaMzFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'mpesamz';
+        return MpesaMz::class;
     }
 }
