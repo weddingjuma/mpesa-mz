@@ -1,15 +1,14 @@
 <?php
 
-namespace calvinchiulele\MPesaMz\Services;
+namespace CalvinChiulele\MPesaMz\Services;
 
 use abdulmueid\mpesa\Config;
 use abdulmueid\mpesa\interfaces\TransactionResponseInterface;
 use abdulmueid\mpesa\Transaction;
 
 /**
- * This class is responsible to forward the transactions requests to Transaction
+ * This class is responsible to forward requests to Transaction
  *
- * @package calvinchiulele\MPesaMz\Services
  * @author Calvin Chiulele <cchiulele@protonmail.com>
  * @since 0.1.0
  * @see Transaction

@@ -1,6 +1,6 @@
 <?php
 
-namespace calvinchiulele\MPesaMz\tests\Services;
+namespace CalvinChiulele\MPesaMz\tests\Services;
 
 use abdulmueid\mpesa\interfaces\TransactionResponseInterface;
 use abdulmueid\mpesa\Transaction;
@@ -84,7 +84,7 @@ class MpesaMzTest extends TestCase
      * Verifies if the refund was performed with successfully
      *
      * @depends testPayment
-     * @param $payment TransactionResponseInterface
+     * @param  TransactionResponseInterface  $payment
      * @return TransactionResponseInterface
      */
     public function testRefund(TransactionResponseInterface $payment): TransactionResponseInterface
@@ -111,7 +111,7 @@ class MpesaMzTest extends TestCase
      * Verifies if the query was performed successfully
      *
      * @depends testRefund
-     * @param $refund TransactionResponseInterface
+     * @param  TransactionResponseInterface  $refund
      */
     public function testQuery(TransactionResponseInterface $refund)
     {

@@ -1,13 +1,11 @@
 <?php
 
-namespace calvinchiulele\MPesaMz\Providers;
+namespace CalvinChiulele\MPesaMz\Providers;
 
-use calvinchiulele\MPesaMz\Services\MpesaMz;
+use CalvinChiulele\MPesaMz\Services\MpesaMz;
 use Illuminate\Support\ServiceProvider;
 
 /**
- *
- * @package calvinchiulele\MPesaMz\Providers
  * @author Calvin Chiulele <cchiulele@protonmail.com>
  * @since 0.1.0
  */
@@ -20,7 +18,7 @@ class MPesaMzServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('mpesamz', function () {
+        $this->app->bind(MpesaMz::class, function () {
             return new MpesaMz();
         });
     }

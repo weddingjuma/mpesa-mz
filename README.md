@@ -10,11 +10,11 @@ For more information of what abdulmueid/mpesa-php-api is, refer to https://githu
 
 All that you have to do is the following:
 ```
-composer require calvin/mpesa-mz
+composer require calvinchiulele/mpesa-mz
 ```
 
 ```
-php artisan vendor:publish --providor=calvinchiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
+php artisan vendor:publish --providor=CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
 ```
 
 # 2. Configuration
