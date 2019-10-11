@@ -14,7 +14,7 @@ composer require calvinchiulele/mpesa-mz
 ```
 
 ```
-php artisan vendor:publish --providor=CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
+php artisan vendor:publish --provider=CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider --tag=config
 ```
 
 # 2. Configuration

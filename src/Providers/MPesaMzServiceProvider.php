@@ -30,7 +30,6 @@ class MPesaMzServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__.'/config/mpesa-config.php' =>
-            config_path('mpesa-config.php')], 'config');
+        $this->publishes([__DIR__.'/../../config/mpesa-config.php' => config_path('mpesa-config.php')], 'config');
     }
 }
