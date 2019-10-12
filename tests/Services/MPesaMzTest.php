@@ -1,24 +1,21 @@
 <?php
 
-namespace CalvinChiulele\MPesaMz\tests\Services;
+namespace CalvinChiulele\MPesaMz\Tests\Services;
 
 use abdulmueid\mpesa\interfaces\TransactionResponseInterface;
-use abdulmueid\mpesa\Transaction;
-use calvinchiulele\MPesaMz\Services\MpesaMz;
+use CalvinChiulele\MPesaMz\Services\MPesaMz;
 use PHPUnit\Framework\TestCase;
 
 /**
- *
- * @package calvinchiulele\MPesaMz\tests\Services
- * @author Calvin Chiulele
+ * @author Calvin Chiulele <cchiulele@protonmail.com>
  * @since 0.1.0
  */
-class MpesaMzTest extends TestCase
+class MPesaMzTest extends TestCase
 {
     /**
-     * Transaction
+     * Transaction class
      *
-     * @var Transaction
+     * @var \abdulmueid\mpesa\Transaction
      */
     private $transaction;
 
@@ -45,7 +42,8 @@ class MpesaMzTest extends TestCase
     {
         parent::setUp();
 
-        $this->transaction = new MpesaMz();
+        $this->transaction = new MPesaMz(
+            __DIR__.'/../config/mpesa-config-test.php');
         $this->amount = 1;
         $this->msisdn = ''; // Full MSISDN i.e. 258840000000
     }
@@ -53,6 +51,7 @@ class MpesaMzTest extends TestCase
     /**
      * Verifies if the payment was performed with successfully
      *
+     * @covers \CalvinChiulele\MPesaMz\Services\MpesaMz::payment
      * @return TransactionResponseInterface
      * @throws \Exception
      */
@@ -83,6 +82,7 @@ class MpesaMzTest extends TestCase
     /**
      * Verifies if the refund was performed with successfully
      *
+     * @covers \CalvinChiulele\MPesaMz\Services\MpesaMz::refund
      * @depends testPayment
      * @param  TransactionResponseInterface  $payment
      * @return TransactionResponseInterface
@@ -110,6 +110,7 @@ class MpesaMzTest extends TestCase
     /**
      * Verifies if the query was performed successfully
      *
+     * @covers \CalvinChiulele\MPesaMz\Services\MpesaMz::query
      * @depends testRefund
      * @param  TransactionResponseInterface  $refund
      */

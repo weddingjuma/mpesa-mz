@@ -2,7 +2,7 @@
 
 namespace CalvinChiulele\MPesaMz\Providers;
 
-use CalvinChiulele\MPesaMz\Services\MpesaMz;
+use CalvinChiulele\MPesaMz\Services\MPesaMz;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -18,8 +18,8 @@ class MPesaMzServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(MpesaMz::class, function () {
-            return new MpesaMz();
+        $this->app->bind(MPesaMz::class, function () {
+            return new MPesaMz();
         });
     }
 

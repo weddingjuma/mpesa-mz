@@ -2,7 +2,6 @@
 
 namespace CalvinChiulele\MPesaMz\Facades;
 
-use CalvinChiulele\MPesaMz\Services\MpesaMz;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -13,9 +12,9 @@ use Illuminate\Support\Facades\Facade;
  * @method abdulmueid\mpesa\interfaces\TransactionResponseInterface query(string $query_reference)
  *
  * @since 0.1.0
- * @see \CalvinChiulele\MpesaMz\Services\MpesaMz
+ * @see \CalvinChiulele\MPesaMz\Services\MPesaMz
  */
-class MPesaMzFacade extends Facade
+class MPesaMz extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -24,6 +23,6 @@ class MPesaMzFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return MpesaMz::class;
+        return \CalvinChiulele\MPesaMz\Services\MPesaMz::class;
     }
 }
