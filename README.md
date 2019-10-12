@@ -18,7 +18,7 @@ php artisan vendor:publish
 ```
 
 When you hit the above command in terminal, you will be provided a list of all service providers registered 
-in your application. Choose the CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider and hit enter.
+in your application. Choose the `CalvinChiulele\MPesaMz\Providers\MPesaMzServiceProvider` and hit enter.
 Now if you check your config folder, you'll find your mpesa-config.php file in there.
 
 # 2. Configuration
@@ -28,7 +28,7 @@ necessary for the config file in your .env in order to the config file work prop
 
 The .env should be like that:
 
-```
+```env
 MPESA_PUBLIC_KEY=xxx
 MPESA_API_HOST="api.sandbox.vm.co.mz"
 MPESA_API_KEY=xxx
@@ -41,9 +41,9 @@ MPESA_SECURITY_CREDENTIAL=xxx
 Where xxx is your data.
 **Note: You've to either use MPESA_API_HOST to reflect to "api.sandbox.vm.co.mz" or production URL from M-Pesa API**
 
-And the newly file created config/mpesa-config.php will be like that:
+And the newly file created `config/mpesa-config.php` will be like that:
 
-```
+```php
 <?php
 
 return [
@@ -126,7 +126,7 @@ M-Pesa service on the Laravel service container.
 
 # 3.1 - Using the M-Pesa facade
  
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -167,7 +167,7 @@ class ExampleController extends Controller
 
 # 3.2 - Using the M-Pesa service from Laravel service container
  
-```
+``` php
 <?php
 
 namespace App\Http\Controllers;
