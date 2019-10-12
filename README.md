@@ -4,7 +4,7 @@ This package is a wrapper for abdulmueid/mpesa-php-api to integrate M-Pesa API e
 
 For more information of what's M-Pesa, please refer to M-Pesa official website: https://www.vm.co.mz/en/M-Pesa2
 
-For more information of what abdulmueid/mpesa-php-api is, refer to https://github.com/abdulmueid/mpesa-php-api
+For more information of what's abdulmueid/mpesa-php-api, refer to https://github.com/abdulmueid/mpesa-php-api
 
 # 1. Installation
 
@@ -26,7 +26,7 @@ Now if you check your config folder, you'll find your mpesa-config.php file in t
 After you have published the config files necessary for the package, you've to add all the keys 
 necessary for the config file in your .env in order to the config file work properly.
 
-The .env would be like that:
+The .env should be like that:
 
 ```
 MPESA_PUBLIC_KEY=xxx
@@ -41,7 +41,7 @@ MPESA_SECURITY_CREDENTIAL=xxx
 Where xxx is your data.
 **Note: You've to either use MPESA_API_HOST to reflect to "api.sandbox.vm.co.mz" or production URL from M-Pesa API**
 
-And the config/mpesa-config.php would be like that:
+And the newly file created config/mpesa-config.php will be like that:
 
 ```
 <?php
@@ -121,17 +121,17 @@ return [
 
 # 3. Usage
 
-In order to use the package in your Laravel application, you can use either facade or get an instance of M-Pesa on the
-service container.
+In order to use the package in your Laravel application, you can use either the facade or get an instance of the
+M-Pesa service on the Laravel service container.
 
-# Using the facade
+# 3.1 - Using the M-Pesa facade
  
 ```
 <?php
 
 namespace App\Http\Controllers;
 
-use CalvinChiulele\MPesaMz\Facades\MPesaMzFacade;
+use CalvinChiulele\MPesaMz\Facades\MPesaMz;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -147,16 +147,17 @@ class ExampleController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->msisdn corresponds to the customer phone number (e.g: 258840000000)
         // $reference corresponds to your M-Pesa TransactionReference
         // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
         // $thirdPartyReference corresponds to your M-Pesa ThirdPartyReference
-        $payment = MPesaMzFacade::payment($request->msisdn, 100, $reference, $thirdPartyReference);
+        $payment = MPesaMz::payment($request->msisdn, 100, $reference, $thirdPartyReference);
 
         // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
-        $refund = MPesaMzFacade::refund($payment->getTransactionID(), 100);
+        $refund = MPesaMz::refund($payment->getTransactionID(), 100);
 
         // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
-        $query = MPesaMzFacade::query($refund->getTransactionID(), 100);
+        $query = MPesaMz::query($refund->getTransactionID(), 100);
 
         // more code
     }
@@ -164,7 +165,7 @@ class ExampleController extends Controller
 
 ```
 
-# Using the instance from service container
+# 3.2 - Using the M-Pesa service from Laravel service container
  
 ```
 <?php
@@ -179,7 +180,7 @@ class ExampleController extends Controller
     /**
      * M-Pesa service class
      *
-     * @var CalvinChiulele\MPesaMz\Services\MpesaMz
+     * @var \CalvinChiulele\MPesaMz\Services\MPesaMz
      */
      protected $mpesaService;
 
@@ -190,7 +191,7 @@ class ExampleController extends Controller
      */
      public function __construct()
      {
-         $this->mpesaService = app('CalvinChiulele\MPesaMz\Services\MpesaMz');
+         $this->mpesaService = app('CalvinChiulele\MPesaMz\Services\MPesaMz');
      }
 
     /**
@@ -201,6 +202,7 @@ class ExampleController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->msisdn corresponds to the customer phone number (e.g: 258840000000)
         // $reference corresponds to your M-Pesa TransactionReference
         // 100 corresponds to the amount of the payment. Please, do best pratices and not use magic numbers.
         // $thirdPartyReference corresponds to your M-Pesa ThirdPartyReference
@@ -218,4 +220,21 @@ class ExampleController extends Controller
 
 ```
 
-This package is still in development so any suggestions, improvements and recommendations are welcomed.
+# 4. Testing
+1. Update tests/config/mpesa-config-test.php with required parameters
+2. Enter the test MSISDN in tests/Services/MPesaMzTest.php on line 48
+3. Run **PHPUnit 8** binary in vendor/bin/
+4. Check the phone for M-Pesa payment requests
+
+The test case currently creates a new transaction, queries the transaction status and refunds the transaction.
+**Tests may be billable when running on production.**
+
+# 5. License
+
+This library is release under the MIT License. See LICENSE file for details.
+
+# 6. Authors
+
+Calvin Carlos da Conceicao Chiulele <cchiulele@protonmail.com> and contributors
+
+This package is still in development phase, so any suggestions, improvements and recommendations are welcomed.
