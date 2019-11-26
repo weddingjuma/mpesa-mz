@@ -235,6 +235,6 @@ This library is release under the MIT License. See LICENSE file for details.
 
 # 6. Authors
 
-Calvin Carlos da Conceicao Chiulele <cchiulele@protonmail.com> and contributors
+Calvin Carlos da Conceição Chiulele <cchiulele@protonmail.com> and contributors
 
-This package is still in development phase, so any suggestions, improvements and recommendations are welcomed.
+This package is still in the development phase, so any suggestions, improvements, and recommendations are welcomed.
